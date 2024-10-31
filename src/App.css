@@ -42,8 +42,9 @@
   align-items: center;
   justify-content: center;
   width: 400px;
+  margin: 20px;
   height: 200px;
-  border: 1px solid #dbe2ef;
+  border: 1px solid #112d4e;
   background-color: #3f72af;
   border-radius: 5%;
   padding: 20px;
@@ -59,5 +60,5 @@ h2 {
   color: #f9f7f7;
 }
 h1 {
-  color: #112d4e;
+  color: #3f72af;
 }
