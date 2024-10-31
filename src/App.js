@@ -6,6 +6,22 @@ import Answer from "./components/Answer";
 function App() {
   const [trivia, setTrivia] = useState([]);
   const [triviaAnswers, setTriviaAnswers] = useState([]);
+  function shuffle(array) {
+    let currentIndex = array.length;
+
+    // While there remain elements to shuffle...
+    while (currentIndex !== 0) {
+      // Pick a remaining element...
+      let randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+
+      // And swap it with the current element.
+      [array[currentIndex], array[randomIndex]] = [
+        array[randomIndex],
+        array[currentIndex]
+      ];
+    }
+  }
   async function getTrivia() {
     try {
       const response = await axios.get(
@@ -35,7 +51,11 @@ function App() {
       console.log(answers);
       console.log(response.data.results);
       setTrivia(response.data.results);
+      for (let i = 0; i < answers.length; i++) {
+        shuffle(answers[i]);
+      }
       setTriviaAnswers(answers);
+      console.log(answers);
     } catch (err) {
       console.log(err);
     }
