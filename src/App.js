@@ -52,16 +52,16 @@ function App() {
 
   return (
     <div className="App">
-      {trivia.map((a, index) => (
-        <div>
-          <h1 key={index}>{a.question}</h1>
+      <div className="all">
+        <div className="game">
+          <h1 key={q}>{trivia[q].question}</h1>
           <div className="allAnswers">
-            {trivia[index].allAnswers.map((ans, ind) => (
+            {trivia[q].allAnswers.map((ans, ind) => (
               <Answer key={ind} answer={ans.answer} />
             ))}
           </div>
         </div>
-      ))}
+      </div>
     </div>
   );
 }

@@ -1,4 +1,7 @@
 .App {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   text-align: center;
 }
 
@@ -43,7 +46,7 @@
   justify-content: center;
   width: 400px;
   margin: 20px;
-  height: 200px;
+  height: 150px;
   border: 1px solid #112d4e;
   background-color: #3f72af;
   border-radius: 5%;
@@ -54,6 +57,20 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+}
+.game {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 980px;
+  height: 600px;
+}
+.all {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 h2 {
