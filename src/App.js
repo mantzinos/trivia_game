@@ -14,7 +14,7 @@ function App() {
       let answers = [];
       for (let i = 0; i < response.data.results.length; i++) {
         answers.push({
-          question: response.data.results[i].question,
+          myQuestion: response.data.results[i].question,
           allAnswers: [
             {
               answer: response.data.results[i].correct_answer,
@@ -39,6 +39,7 @@ function App() {
         shuffle(answers[i].allAnswers);
       } //
       setTrivia(answers);
+      setGameIsOn(true);
     } catch (err) {
       console.log(err);
     }
@@ -49,21 +50,27 @@ function App() {
   console.log("--------------");
   console.log(trivia);
   console.log("--------------");
-
-  return (
-    <div className="App">
-      <div className="all">
-        <div className="game">
-          <h1 key={q}>{trivia[q].question}</h1>
-          <div className="allAnswers">
-            {trivia[q].allAnswers.map((ans, ind) => (
-              <Answer key={ind} answer={ans.answer} />
-            ))}
+  if (!gameIsOn) {
+    return (
+      <div>
+        <h1>Hi</h1>
+      </div>
+    );
+  } else
+    return (
+      <div className="App">
+        <div className="all">
+          <div className="game">
+            <h1 key={q}>{trivia[q].myQuestion}</h1>
+            <div className="allAnswers">
+              {trivia[q].allAnswers.map((ans, ind) => (
+                <Answer key={ind} answer={ans.answer} />
+              ))}
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  );
+    );
 }
 
 export default App;
