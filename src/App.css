@@ -47,9 +47,9 @@
   width: 400px;
   margin: 20px;
   height: 150px;
-  border: 1px solid #112d4e;
+  border: 2px solid #f9f7f7;
   background-color: #3f72af;
-  border-radius: 5%;
+  border-radius: 4%;
   padding: 20px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
