@@ -3,11 +3,15 @@ import "./App.css";
 import axios from "axios";
 import shuffle from "./brain/shuffle";
 import Answer from "./components/Answer";
+import choosequestions from "./brain/choosequestions";
+import Choose from "./components/Choose";
 
 function App() {
   const [trivia, setTrivia] = useState([]);
   const [gameIsOn, setGameIsOn] = useState(false);
   const [q, setQ] = useState(0);
+  const [score, setScore] = useState(0);
+  const [choice, setChoice] = useState({});
   async function getTrivia(link) {
     try {
       const response = await axios.get(link);
@@ -44,33 +48,67 @@ function App() {
       console.log(err);
     }
   }
-  getTrivia(
-    "https://opentdb.com/api.php?amount=10&category=18&difficulty=medium&type=multiple"
-  );
-  console.log("--------------");
-  console.log(trivia);
-  console.log("--------------");
-  if (!gameIsOn) {
-    return (
-      <div>
-        <h1>Hi</h1>
-      </div>
+  // getTrivia("https://opentdb.com/api.php?amount=10&category=26&type=multiple");
+  function startGame(cat) {
+    getTrivia(
+      `https://opentdb.com/api.php?amount=10&category=${cat}&type=multiple`
     );
-  } else
+  }
+  function playGame(correct) {
+    if (correct) {
+      setScore(score + 1);
+    }
+    setQ(q + 1);
+  }
+  if (!gameIsOn) {
     return (
       <div className="App">
         <div className="all">
           <div className="game">
-            <h1 key={q}>{trivia[q].myQuestion}</h1>
+            <h1>Choose type of questions</h1>
             <div className="allAnswers">
-              {trivia[q].allAnswers.map((ans, ind) => (
-                <Answer key={ind} answer={ans.answer} />
+              {choosequestions.map((cItem, ind) => (
+                <Answer
+                  key={ind}
+                  id={cItem.category}
+                  answer={cItem.type}
+                  clickMe={startGame}
+                />
               ))}
             </div>
           </div>
         </div>
       </div>
     );
+  } else if (gameIsOn) {
+    while (q < 10) {
+      return (
+        <div className="App">
+          <div className="all">
+            <div className="game">
+              <h1 key={q}>{`Question ${q + 1}: ${
+                trivia[q].myQuestion
+              } \nScore: ${score}`}</h1>
+              <div className="allAnswers">
+                {trivia[q].allAnswers.map((ans, ind) => (
+                  <Choose
+                    key={ind}
+                    answer={ans.answer}
+                    correct={ans.correct}
+                    clickMe={playGame}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    }
+  } else if (q == 10) {
+    setQ(0);
+    setScore(0);
+    setGameIsOn(false);
+  }
 }
 
 export default App;

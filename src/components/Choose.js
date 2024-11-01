@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 
-const Answer = ({ answer, id, clickMe }) => {
+const Choose = ({ answer, correct, clickMe }) => {
   const [hover, setHover] = useState(false);
   return (
     <div
       onClick={() => {
-        clickMe(id);
+        clickMe(correct);
       }}
       onMouseOver={() => {
         setHover(true);
@@ -24,4 +24,4 @@ const Answer = ({ answer, id, clickMe }) => {
   );
 };
 
-export default Answer;
+export default Choose;
