@@ -104,10 +104,34 @@ function App() {
         </div>
       );
     }
-  } else if (q == 10) {
     setQ(0);
     setScore(0);
+    setTrivia([]);
     setGameIsOn(false);
+  } else if (q === 10) {
+    setQ(0);
+    setScore(0);
+    setTrivia([]);
+    setGameIsOn(false);
+    return (
+      <div className="App">
+        <div className="all">
+          <div className="game">
+            <h1>Choose type of questions</h1>
+            <div className="allAnswers">
+              {choosequestions.map((cItem, ind) => (
+                <Answer
+                  key={ind}
+                  id={cItem.category}
+                  answer={cItem.type}
+                  clickMe={startGame}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    );
   }
 }
 
