@@ -67,6 +67,14 @@
   width: 980px;
   height: 600px;
 }
+.game2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 980px;
+}
 .all {
   display: flex;
   justify-content: center;

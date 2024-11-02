@@ -64,7 +64,7 @@ function App() {
     return (
       <div className="App">
         <div className="all">
-          <div className="game">
+          <div className="game2">
             <h1>Choose type of questions</h1>
             <div className="allAnswers">
               {choosequestions.map((cItem, ind) => (
