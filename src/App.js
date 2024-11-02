@@ -7,6 +7,7 @@ import choosequestions from "./brain/choosequestions";
 import Choose from "./components/Choose";
 
 function App() {
+  //build
   const [trivia, setTrivia] = useState([]);
   const [gameIsOn, setGameIsOn] = useState(false);
   const [q, setQ] = useState(0);
