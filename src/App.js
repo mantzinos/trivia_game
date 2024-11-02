@@ -11,7 +11,6 @@ function App() {
   const [gameIsOn, setGameIsOn] = useState(false);
   const [q, setQ] = useState(0);
   const [score, setScore] = useState(0);
-  const [choice, setChoice] = useState({});
   async function getTrivia(link) {
     try {
       const response = await axios.get(link);
